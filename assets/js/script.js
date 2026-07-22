@@ -168,3 +168,30 @@ window.addEventListener("mousemove", function (event) {
   }
 
 });
+
+function bookTable() {
+
+const data = {
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    person: document.getElementById("person").value,
+    date: document.getElementById("date").value,
+    time: document.getElementById("time").value,
+    message: document.getElementById("message").value
+};
+
+fetch("https://script.google.com/macros/s/AKfycby9EZWUYNsT0NBx8SKVlNYTnmUwE-Htnb5l2Fw6ByRZxdnXLv2GjVOrFEo0XBdgdTs1/exec", {
+    method: "POST",
+    body: new URLSearchParams(data)
+})
+.then(response => response.text())
+.then(result => {
+    alert("Booking Successful!");
+    console.log(result);
+})
+.catch(error => {
+    console.log(error);
+    alert("Error: " + error);
+});
+
+}
